@@ -50,7 +50,7 @@ const ContentDetail = () => {
         
         // 비슷한 영화 로드
         const similar = await getSimilarMovies(id);
-        setSimilarContent(similar.slice(0, 5));
+        setSimilarContent(similar.slice(0, 6));
       } else if (type === 'book') {
         const bookData = await getBookDetails(id);
         setContent(bookData);
@@ -181,7 +181,7 @@ const ContentDetail = () => {
       <div className="content-detail-container">
         {/* 새로고침 버튼 */}
         <button className="refresh-button" onClick={handleRefresh}>
-           다른 {type === 'movie' ? '영화' : '도서'} 추천
+          🎲 다른 {type === 'movie' ? '영화' : '도서'} 추천
         </button>
 
         <div className="content-main">
