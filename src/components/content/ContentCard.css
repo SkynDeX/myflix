@@ -1,0 +1,158 @@
+/* ContentCard 스타일 */
+
+.content-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 400px;
+  break-inside: avoid;
+  box-sizing: border-box;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 이미지 영역 */
+.content-card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 150%; /* 2:3 비율 */
+  overflow: hidden;
+  background: #f0f0f0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.content-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 오버레이 설명 */
+.content-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.content-card:hover .content-card-overlay {
+  opacity: 1;
+}
+
+.content-card-description {
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* 정보 영역 */
+.content-card-info {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.content-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 액션 버튼들 */
+.content-card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.action-button {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 18px;
+}
+
+.action-button:hover {
+  background: #e9ecef;
+  transform: scale(1.1);
+}
+
+/* 위시리스트 버튼 */
+.wishlist-button.active {
+  background: #ffe0e0;
+  border-color: #ff6b6b;
+}
+
+/* 추천 버튼 */
+.recommend-button:hover {
+  background: #e3f2fd;
+  border-color: #2196f3;
+}
+
+/* 플레이리스트 버튼 */
+.playlist-button:hover {
+  background: #f3e5f5;
+  border-color: #9c27b0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .content-card-title {
+    font-size: 13px;
+  }
+
+  .content-card-info {
+    padding: 12px;
+  }
+
+  .action-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .content-card-description {
+    font-size: 12px;
+  }
+}

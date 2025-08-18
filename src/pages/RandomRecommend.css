@@ -1,0 +1,107 @@
+/* 랜덤 추천 페이지 스타일 */
+
+.random-recommend-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.loading-container {
+  text-align: center;
+  color: white;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 30px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading-container p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.error-container {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+.error-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.error-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.error-container button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.error-container button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .loading-container h2 {
+    font-size: 24px;
+  }
+
+  .loading-container p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .random-recommend-page {
+    padding: 15px;
+  }
+
+  .loading-container h2 {
+    font-size: 20px;
+  }
+
+  .loading-container p {
+    font-size: 14px;
+  }
+
+  .error-container {
+    padding: 30px 20px;
+  }
+}
