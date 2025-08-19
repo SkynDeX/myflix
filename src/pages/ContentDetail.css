@@ -85,7 +85,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.wishlist-toggle-button {
+.mypage-toggle-button {
   width: 100%;
   margin-top: 20px;
   padding: 12px;
@@ -98,11 +98,11 @@
   transition: all 0.3s;
 }
 
-.wishlist-toggle-button:hover {
+.mypage-toggle-button:hover {
   background: #f8f9fa;
 }
 
-.wishlist-toggle-button.active {
+.mypage-toggle-button.active {
   background: #ffe0e0;
   color: #e50914;
   border-color: #e50914;

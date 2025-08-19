@@ -1,212 +1,214 @@
 /* Header 스타일 */
 
 header.header {
-  background-color: #141414;
-  color: white;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background-color: #141414;
+    color: white;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 header .header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* 로고 */
 header .logo {
-  font-size: 28px;
-  font-weight: bold;
-  color: #e50914;
-  text-decoration: none;
-  transition: transform 0.2s;
+    font-size: 28px;
+    font-weight: bold;
+    color: #e50914;
+    text-decoration: none;
+    transition: transform 0.2s;
 }
 
 header .logo:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 /* 컨텐츠 탭 */
 header .content-tabs {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-  margin-left: 50px;
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    margin-left: 50px;
 }
 
 header .tab-button {
-  background: none;
-  border: none;
-  color: #b3b3b3;
-  font-size: 16px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-bottom: 2px solid transparent;
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
 }
 
 header .tab-button:hover {
-  color: white;
+    color: white;
 }
 
-header.tab-button.active {
-  color: white;
-  border-bottom-color: #e50914;
+header .tab-button.active {
+    color: white;
+    font-weight: bold;
+    border-bottom-color: #e50914;
 }
 
 /* 검색바 */
 header .search-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  margin-left: 50px;
-  max-width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    margin-left: 50px;
+    max-width: 400px;
 }
 
 header .search-input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 14px;
-  outline: none;
-  transition: background-color 0.3s;
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s;
 }
 
 header .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 header .search-input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 header .search-button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  white-space: nowrap;
-  margin-right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    margin-right: 20px;
 }
 
 header .search-button:hover {
-  background-color: #333;
+    background-color: #333;
 }
 
 /* 사용자 메뉴 */
 header .user-menu {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 header .auth-button {
-  background-color: #e50914;
-  color: white;
-  text-decoration: none;
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: 14px;
-  transition: background-color 0.3s;
+    background-color: #e50914;
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
 
 header .auth-button:hover {
-  background-color: #f40612;
+    background-color: #f40612;
 }
 
 /* 드롭다운 메뉴 */
 header .user-dropdown {
-  position: relative;
-  cursor: pointer;
+    position: relative;
+    cursor: pointer;
 }
 
 header .user-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 header .user-name {
-  padding: 8px 16px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: inline-block;
-  transition: background-color 0.3s;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    transition: background-color 0.3s;
 }
 
 header .user-dropdown:hover .user-name {
-  background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 header .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #242424;
-  min-width: 200px;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  margin-top: 10px;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #242424;
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
 @keyframes dropdownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 header .dropdown-item {
-  display: block;
-  padding: 12px 20px;
-  color: #b3b3b3;
-  text-decoration: none;
-  transition: all 0.3s;
-  font-size: 14px;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
+    display: block;
+    padding: 12px 20px;
+    color: #b3b3b3;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 14px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
 }
 
 header .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 header .logout-btn {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #e50914;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e50914;
 }
 
 header .logout-btn:hover {
-  background-color: rgba(229, 9, 20, 0.1);
+    background-color: rgba(229, 9, 20, 0.1);
 }
 
 /* 반응형 디자인 */

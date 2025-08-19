@@ -1,166 +1,174 @@
 /* 마이페이지 스타일 */
 
 .mypage {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px 40px;
-  min-height: 100vh;
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    padding: 80px 20px 40px;
+    min-height: 100vh;
 }
 
 .mypage-header {
-  text-align: center;
-  margin-bottom: 50px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #e0e0e0;
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 .mypage-header h1 {
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 10px;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .welcome-message {
-  font-size: 18px;
-  color: #666;
+    font-size: 18px;
+    color: #666;
 }
 
 /* 섹션 */
 .mypage-section {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
 .section-header h2 {
-  font-size: 24px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .badge {
-  background: #e50914;
-  color: white;
-  font-size: 14px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-weight: normal;
+    background: #e50914;
+    color: white;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: normal;
 }
 
 .more-link {
-  color: #667eea;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  transition: color 0.3s;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
 .more-link:hover {
-  color: #764ba2;
-  text-decoration: underline;
+    color: #764ba2;
+    text-decoration: underline;
 }
 
 /* 컨텐츠 그리드 (작은 버전) */
 .content-grid-small {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 /* 플레이리스트 그리드 (작은 버전) */
 .playlist-grid-small {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 /* 추천 받은 아이템 */
 .recommended-item {
-  position: relative;
+    position: relative;
 }
 
 .new-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #e50914;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  z-index: 10;
-  animation: pulse 2s infinite;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e50914;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* 빈 메시지 */
 .empty-message {
-  text-align: center;
-  padding: 40px 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  color: #666;
+    text-align: center;
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
 }
 
 .empty-message p {
-  margin: 8px 0;
-  font-size: 15px;
+    margin: 8px 0;
+    font-size: 15px;
 }
 
 .empty-message p:first-child {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-  .mypage {
-    padding: 70px 15px 30px;
-  }
+    .mypage {
+        padding: 70px 15px 30px;
+    }
 
-  .mypage-header h1 {
-    font-size: 28px;
-  }
+    .mypage-header h1 {
+        font-size: 28px;
+    }
 
-  .welcome-message {
-    font-size: 16px;
-  }
+    .welcome-message {
+        font-size: 16px;
+    }
 
-  .mypage-section {
-    margin-bottom: 40px;
-  }
+    .mypage-section {
+        margin-bottom: 40px;
+    }
 
-  .section-header h2 {
-    font-size: 20px;
-  }
+    .section-header h2 {
+        font-size: 20px;
+    }
 
-  .content-grid-small {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-  }
+    .content-grid-small {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
 
-  .playlist-grid-small {
-    grid-template-columns: 1fr;
-  }
+    .playlist-grid-small {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
-  .content-grid-small {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+    .content-grid-small {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 }
