@@ -2,19 +2,43 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAllUsers } from '../../utils/localStorage';
 import './PlaylistCard.css';
 
-const PlaylistCard = ({ playlist }) => {
+const PlaylistCard = ({ playlist, showUserInfo = false }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate(`/playlist/${playlist.id}`);
     };
 
+    const getUserDisplayName = () => {
+        if (!showUserInfo || !playlist.userId) return null;
+        
+        const allUsers = getAllUsers();
+        const user = allUsers.find(u => u.id === playlist.userId);
+        if (!user) return '알 수 없는 사용자';
+        
+        return user.name || user.email;
+    };
+
+    const getUserInitial = () => {
+        const displayName = getUserDisplayName();
+        return displayName ? displayName.charAt(0).toUpperCase() : '?';
+    };
+
     return (
         <div className="playlist-card" onClick={handleClick}>
             <div className="playlist-card-header">
                 <h3 className="playlist-title">{playlist.title}</h3>
+                {showUserInfo && (
+                    <div className="playlist-user-info">
+                        <div className="user-avatar-small">
+                            {getUserInitial()}
+                        </div>
+                        <span className="user-name-small">{getUserDisplayName()}</span>
+                    </div>
+                )}
             </div>
 
             <p className="playlist-description">{playlist.description}</p>

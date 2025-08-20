@@ -26,6 +26,7 @@ const ContentCard = ({ content, type }) => {
         if (user && content) {
             const wishlist = getWishlist(user.id);
             const contentId = type === 'movie' ? content.id : (content.isbn ? content.isbn : content.id);
+            console.log("content: ", content);
             setIsInWishlist(wishlist.some(item => item.id === contentId && item.type === type));
         }
     }, [user, content, type]);
@@ -46,7 +47,7 @@ const ContentCard = ({ content, type }) => {
             return;
         }
 
-        const contentId = type === 'movie' ? content.id : content.isbn;
+        const contentId = type === 'movie' ? content.id : (content.isbn ? content.isbn : content.id);
 
         if (isInWishlist) {
             removeFromWishlist(user.id, contentId, type);
@@ -56,7 +57,7 @@ const ContentCard = ({ content, type }) => {
                 id: contentId,
                 type: type,
                 title: content.title,
-                image: type === 'movie' ? getImageUrl(content.poster_path) : content.image,
+                image: type === 'movie' ? getImageUrl(content.poster_path ? content.poster_path : content.image) : content.image,
                 description: content.overview || content.description
             };
             addToWishlist(user.id, wishlistItem);

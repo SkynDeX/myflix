@@ -130,15 +130,32 @@ export const addRecommendation = (fromUserId, toUserId, content) => {
         recommendations[toUserId] = [];
     }
 
-    recommendations[toUserId].push({
-        ...content,
-        from: fromUserId,
-        recommendedAt: new Date().toISOString(),
-        viewed: false
-    });
+    // 중복 체크
+    const exists = recommendations[toUserId].some(
+        i => i.id === content.id && i.type === content.type
+    );
 
-    saveToStorage(STORAGE_KEYS.RECOMMENDED_CONTENT, recommendations);
+    if (!exists) {
+        recommendations[toUserId].push({
+            ...content,
+            from: fromUserId,
+            recommendedAt: new Date().toISOString(),
+            viewed: false
+        });
+        saveToStorage(STORAGE_KEYS.RECOMMENDED_CONTENT, recommendations);
+    }
+
     return recommendations[toUserId];
+};
+
+export const removeFromRecommendation = (userId, itemId, itemType, content) => {
+    const recommendations = getFromStorage(STORAGE_KEYS.RECOMMENDED_CONTENT) || {};
+
+    if (content) {
+        recommendations[userId] = content;
+        saveToStorage(STORAGE_KEYS.RECOMMENDED_CONTENT, recommendations);
+    }
+    return recommendations[userId] || [];
 };
 
 // 컨텐츠 조회 여부 업데이트
@@ -295,6 +312,19 @@ const decrementPlaylistLikes = (playlistId) => {
     });
 };
 
+// 플레이리스트 ID로 조회
+export const getPlaylistById = (playlistId) => {
+    const playlists = getFromStorage(STORAGE_KEYS.MY_PLAYLISTS) || {};
+    
+    for (const userId in playlists) {
+        const playlist = playlists[userId].find(p => p.id === playlistId);
+        if (playlist) {
+            return { ...playlist, userId };
+        }
+    }
+    return null;
+};
+
 // 리뷰 관리
 export const getReviews = (contentId, contentType) => {
     const reviews = getFromStorage(STORAGE_KEYS.REVIEWS) || {};
@@ -325,4 +355,173 @@ export const addReview = (userId, contentId, contentType, review) => {
 export const getUserReview = (userId, contentId, contentType) => {
     const reviews = getReviews(contentId, contentType);
     return reviews.find(r => r.userId === userId);
+};
+
+// ===============================
+// 친구 관리 시스템
+// ===============================
+
+// 친구 목록 가져오기
+export const getFriends = (userId) => {
+    const friends = getFromStorage(STORAGE_KEYS.FRIENDS) || {};
+    return friends[userId] || [];
+};
+
+// 친구 추가
+export const addFriend = (userId, friendId) => {
+    if (userId === friendId) return false; // 자기 자신은 추가할 수 없음
+
+    const friends = getFromStorage(STORAGE_KEYS.FRIENDS) || {};
+    
+    // 양방향으로 친구 관계 설정
+    if (!friends[userId]) friends[userId] = [];
+    if (!friends[friendId]) friends[friendId] = [];
+    
+    // 이미 친구인지 확인
+    if (!friends[userId].includes(friendId)) {
+        friends[userId].push(friendId);
+        friends[friendId].push(userId);
+        saveToStorage(STORAGE_KEYS.FRIENDS, friends);
+        
+        // 친구 요청 삭제 (있다면)
+        removeFriendRequest(userId, friendId);
+        removeFriendRequest(friendId, userId);
+        
+        return true;
+    }
+    return false;
+};
+
+// 친구 삭제
+export const removeFriend = (userId, friendId) => {
+    const friends = getFromStorage(STORAGE_KEYS.FRIENDS) || {};
+    
+    if (friends[userId]) {
+        friends[userId] = friends[userId].filter(id => id !== friendId);
+    }
+    if (friends[friendId]) {
+        friends[friendId] = friends[friendId].filter(id => id !== userId);
+    }
+    
+    saveToStorage(STORAGE_KEYS.FRIENDS, friends);
+    return true;
+};
+
+// 친구 요청 데이터 구조 가져오기
+export const getFriendRequests = (userId) => {
+    const requests = getFromStorage(STORAGE_KEYS.FRIEND_REQUESTS) || {};
+    return requests[userId] || { sent: [], received: [] };
+};
+
+// 친구 요청 보내기
+export const sendFriendRequest = (fromUserId, toUserId) => {
+    if (fromUserId === toUserId) return false; // 자기 자신에게는 요청할 수 없음
+    
+    const requests = getFromStorage(STORAGE_KEYS.FRIEND_REQUESTS) || {};
+    
+    // 요청 보내는 사람의 sent 목록에 추가
+    if (!requests[fromUserId]) {
+        requests[fromUserId] = { sent: [], received: [] };
+    }
+    if (!requests[fromUserId].sent.includes(toUserId)) {
+        requests[fromUserId].sent.push(toUserId);
+    }
+    
+    // 요청 받는 사람의 received 목록에 추가
+    if (!requests[toUserId]) {
+        requests[toUserId] = { sent: [], received: [] };
+    }
+    if (!requests[toUserId].received.includes(fromUserId)) {
+        requests[toUserId].received.push(fromUserId);
+    }
+    
+    saveToStorage(STORAGE_KEYS.FRIEND_REQUESTS, requests);
+    return true;
+};
+
+// 친구 요청 수락
+export const acceptFriendRequest = (userId, fromUserId) => {
+    // 친구로 추가
+    const success = addFriend(userId, fromUserId);
+    
+    if (success) {
+        // 친구 요청 데이터에서 제거
+        removeFriendRequest(userId, fromUserId);
+        removeFriendRequest(fromUserId, userId);
+    }
+    
+    return success;
+};
+
+// 친구 요청 거절
+export const rejectFriendRequest = (userId, fromUserId) => {
+    removeFriendRequest(userId, fromUserId);
+    removeFriendRequest(fromUserId, userId);
+    return true;
+};
+
+// 친구 요청 삭제 (내부 함수)
+const removeFriendRequest = (userId, targetUserId) => {
+    const requests = getFromStorage(STORAGE_KEYS.FRIEND_REQUESTS) || {};
+    
+    if (requests[userId]) {
+        requests[userId].sent = requests[userId].sent.filter(id => id !== targetUserId);
+        requests[userId].received = requests[userId].received.filter(id => id !== targetUserId);
+        saveToStorage(STORAGE_KEYS.FRIEND_REQUESTS, requests);
+    }
+};
+
+// 친구 요청 취소
+export const cancelFriendRequest = (fromUserId, toUserId) => {
+    removeFriendRequest(fromUserId, toUserId);
+    removeFriendRequest(toUserId, fromUserId);
+    return true;
+};
+
+// 사용자 검색 (친구 찾기용)
+export const searchUsers = (query, currentUserId) => {
+    const users = getAllUsers();
+    const friends = getFriends(currentUserId);
+    const { sent, received } = getFriendRequests(currentUserId);
+    
+    if (!query.trim()) return [];
+    
+    return users
+        .filter(user => 
+            user.id !== currentUserId && // 자기 자신 제외
+            (user.name?.toLowerCase().includes(query.toLowerCase()) ||
+             user.email?.toLowerCase().includes(query.toLowerCase()))
+        )
+        .map(user => ({
+            ...user,
+            isFriend: friends.includes(user.id),
+            requestSent: sent.includes(user.id),
+            requestReceived: received.includes(user.id)
+        }));
+};
+
+// 친구 상태 확인
+export const getFriendStatus = (userId, targetUserId) => {
+    const friends = getFriends(userId);
+    const { sent, received } = getFriendRequests(userId);
+    
+    if (friends.includes(targetUserId)) {
+        return 'friends';
+    } else if (sent.includes(targetUserId)) {
+        return 'request_sent';
+    } else if (received.includes(targetUserId)) {
+        return 'request_received';
+    } else {
+        return 'none';
+    }
+};
+
+// 친구 정보 가져오기 (사용자 정보와 함께)
+export const getFriendsWithInfo = (userId) => {
+    const friendIds = getFriends(userId);
+    const users = getAllUsers();
+    
+    return friendIds
+        .map(friendId => users.find(user => user.id === friendId))
+        .filter(Boolean); // null/undefined 제거
 };

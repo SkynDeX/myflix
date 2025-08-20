@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useContentType } from '../contexts/ContentTypeContext';
-import { getRecommendedContent, getAllUsers, markContentAsViewed } from '../utils/localStorage';
+import { getRecommendedContent, getAllUsers, markContentAsViewed, removeFromRecommendation } from '../utils/localStorage';
 import ContentCard from '../components/content/ContentCard';
 import './RecommendedContent.css';
 
@@ -84,6 +84,17 @@ const RecommendedContent = () => {
         window.scrollTo(0, 0);
     };
 
+    const removeAllRecommendations = () => {
+        if (!window.confirm('이미 확인된 추천 컨텐츠를 삭제하시겠습니까?')) {
+            return;
+        }
+
+        const content = recommendations.filter(item => !item.viewed);
+
+        removeFromRecommendation(user.id, content.id, isMovieMode ? 'movie' : 'book', content);
+        loadRecommendations();
+    };
+
     return (
         <div className="recommended-page">
             <div className="recommended-header">
@@ -98,6 +109,10 @@ const RecommendedContent = () => {
 
             {/* 필터 옵션 */}
             <div className="recommended-filters">
+                <div className="recommended-count">
+                    총 {recommendations.length}개
+                </div>
+
                 <label className="filter-checkbox">
                     <input
                         type="checkbox"
@@ -105,10 +120,11 @@ const RecommendedContent = () => {
                         onChange={(e) => setShowUnviewedOnly(e.target.checked)}
                     />
                     <span>확인하지 않은 컨텐츠만 보기</span>
+
+                    <button className="remove-all-button" onClick={() => removeAllRecommendations()}>
+                        이미 확인된 추천 컨텐츠 모두 삭제
+                    </button>
                 </label>
-                <div className="recommended-count">
-                    총 {recommendations.length}개
-                </div>
             </div>
 
             {/* 추천 컨텐츠 목록 */}

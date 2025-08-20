@@ -2,15 +2,17 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { getAllUsers, addRecommendation } from '../../utils/localStorage';
+import { useFriend } from '../../contexts/FriendContext';
+import { addRecommendation } from '../../utils/localStorage';
 import './Modal.css';
 
 const RecommendModal = ({ content, type, onClose }) => {
     const { user } = useAuth();
+    const { friends } = useFriend();
     const [selectedUsers, setSelectedUsers] = useState([]);
 
-    // 현재 사용자를 제외한 모든 사용자 목록
-    const users = getAllUsers().filter(u => u.id !== user.id);
+    // 친구 목록만 표시
+    const users = friends;
 
     const handleUserToggle = (userId) => {
         setSelectedUsers(prev =>
@@ -30,10 +32,10 @@ const RecommendModal = ({ content, type, onClose }) => {
             id: type === 'movie' ? content.id : content.isbn,
             type: type,
             title: content.title,
-            image: type === 'movie' ? content.poster_path : content.image,
+            image: type === 'movie' ? (content.poster_path ? content.poster_path : content.image) : content.image,
             description: content.overview || content.description
         };
-
+        
         selectedUsers.forEach(userId => {
             addRecommendation(user.id, userId, contentData);
         });
@@ -54,7 +56,10 @@ const RecommendModal = ({ content, type, onClose }) => {
                     <p className="modal-subtitle">"{content.title}"을(를) 추천할 친구를 선택하세요</p>
 
                     {users.length === 0 ? (
-                        <p className="no-users-message">추천할 수 있는 사용자가 없습니다.</p>
+                        <div className="no-users-message">
+                            <p>추천할 수 있는 친구가 없습니다.</p>
+                            <p>친구를 먼저 추가해보세요!</p>
+                        </div>
                     ) : (
                         <div className="user-list">
                             {users.map(u => (

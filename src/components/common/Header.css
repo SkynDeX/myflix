@@ -67,7 +67,6 @@ header .tab-button.active {
 header .search-container {
     display: flex;
     align-items: center;
-    gap: 10px;
     flex: 1;
     margin-left: 50px;
     max-width: 400px;

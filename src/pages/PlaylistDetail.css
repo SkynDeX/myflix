@@ -1,0 +1,322 @@
+/* 플레이리스트 상세보기 페이지 스타일 */
+
+div.playlist-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    min-height: 100vh;
+}
+
+/* 로딩 및 에러 상태 */
+div.playlist-detail-page .loading-container,
+div.playlist-detail-page .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+}
+
+div.playlist-detail-page .loading-text {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+}
+
+div.playlist-detail-page .error-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+div.playlist-detail-page .back-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+div.playlist-detail-page .back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 플레이리스트 헤더 */
+div.playlist-detail-page .playlist-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 15px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+div.playlist-detail-page .playlist-header-content {
+    flex: 1;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+div.playlist-detail-page .playlist-title-section {
+    flex: 1;
+}
+
+div.playlist-detail-page .playlist-title {
+    font-size: 36px;
+    color: #333;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+}
+
+div.playlist-detail-page .playlist-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 소유자 정보 */
+div.playlist-detail-page .playlist-owner-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 100px;
+}
+
+div.playlist-detail-page .owner-avatar .avatar-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+div.playlist-detail-page .owner-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+div.playlist-detail-page .owner-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+div.playlist-detail-page .owner-badge {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+div.playlist-detail-page .playlist-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 액션 버튼 */
+div.playlist-detail-page .playlist-actions {
+    display: flex;
+    gap: 10px;
+}
+
+div.playlist-detail-page .action-button {
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 120px;
+}
+
+div.playlist-detail-page .delete-button {
+    background: #e74c3c;
+    color: white;
+}
+
+div.playlist-detail-page .delete-button:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+div.playlist-detail-page .like-button {
+    background: #f8f9fa;
+    color: #333;
+    border: 2px solid #dee2e6;
+}
+
+div.playlist-detail-page .like-button.liked {
+    background: #e91e63;
+    color: white;
+    border-color: #e91e63;
+}
+
+div.playlist-detail-page .like-button:hover {
+    transform: translateY(-2px);
+}
+
+div.playlist-detail-page .like-button:not(.liked):hover {
+    background: #e91e63;
+    color: white;
+    border-color: #e91e63;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+}
+
+/* 컨텐츠 그리드 */
+div.playlist-detail-page .playlist-content {
+    margin-top: 40px;
+}
+
+div.playlist-detail-page .content-grid-small {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 빈 플레이리스트 */
+div.playlist-detail-page .empty-playlist {
+    text-align: center;
+    padding: 80px 20px;
+    color: #666;
+}
+
+div.playlist-detail-page .empty-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+div.playlist-detail-page .empty-playlist h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+div.playlist-detail-page .empty-playlist p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .content-grid-small {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .playlist-detail-page {
+        padding: 70px 15px 30px;
+    }
+
+    .playlist-detail-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .playlist-header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .playlist-title {
+        font-size: 28px;
+    }
+
+    .playlist-description {
+        font-size: 16px;
+    }
+
+    .playlist-owner-info {
+        min-width: auto;
+    }
+
+    .playlist-actions {
+        justify-content: center;
+    }
+
+    .content-grid-small {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-grid-small {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .action-button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .owner-avatar .avatar-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .owner-name {
+        font-size: 16px;
+    }
+
+    .playlist-meta {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-grid-small {
+        grid-template-columns: 1fr;
+    }
+
+    .empty-playlist {
+        padding: 60px 15px;
+    }
+
+    .empty-icon {
+        font-size: 60px;
+    }
+
+    .empty-playlist h2 {
+        font-size: 20px;
+    }
+
+    .empty-playlist p {
+        font-size: 14px;
+    }
+}

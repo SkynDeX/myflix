@@ -1,0 +1,355 @@
+/* 친구 관리 페이지 스타일 */
+
+div.friends-page {
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 80px 20px 40px;
+    width: 100%;
+}
+
+div.friends-page .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.friends-page .header-content h1 {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+}
+
+div.friends-page .header-content p {
+    margin: 0;
+    font-size: 18px;
+    color: #666;
+}
+
+div.friends-page .header-stats {
+    display: flex;
+    gap: 20px;
+}
+
+div.friends-page .stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+div.friends-page .stat-item.highlight {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+div.friends-page .stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+div.friends-page .stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+div.friends-page .page-tabs {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+div.friends-page .tabs-nav {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.tabs-nav::-webkit-scrollbar {
+    display: none;
+}
+
+div.friends-page .tab-button {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #666;
+}
+
+div.friends-page .tab-button:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+div.friends-page .tab-button.active {
+    color: #007bff;
+    background: #f8f9fa;
+}
+
+div.friends-page .tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #007bff;
+}
+
+div.friends-page .tab-icon {
+    font-size: 24px;
+}
+
+div.friends-page .tab-text {
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+div.friends-page .notification-badge {
+    background: #dc3545;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 16px;
+    text-align: center;
+    animation: bounce 0.5s ease-in-out;
+}
+
+div.friends-page .tab-count {
+    background: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+div.friends-page .tab-count.notification {
+    background: #dc3545;
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+div.friends-page .tab-button.active .tab-count {
+    background: #007bff;
+}
+
+div.friends-page .tab-button.active .tab-count.notification {
+    background: #dc3545;
+}
+
+div.friends-page .page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+div.friends-page .auth-required {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+div.friends-page .auth-icon {
+    font-size: 80px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+}
+
+div.friends-page .auth-required h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #333;
+}
+
+div.friends-page .auth-required p {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 32px 0;
+    max-width: 400px;
+}
+
+div.friends-page .login-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+div.friends-page .login-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    div.friends-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 20px;
+        gap: 16px;
+    }
+    
+    div.friends-page .header-content h1 {
+        font-size: 24px;
+    }
+    
+    div.friends-page .header-content p {
+        font-size: 14px;
+    }
+    
+    div.friends-page .header-stats {
+        width: 100%;
+        justify-content: space-around;
+        gap: 12px;
+    }
+    
+    div.friends-page .stat-item {
+        flex: 1;
+        padding: 12px 16px;
+    }
+    
+    div.friends-page .stat-number {
+        font-size: 20px;
+    }
+    
+    div.friends-page .stat-label {
+        font-size: 12px;
+    }
+    
+    div.friends-page .tab-button {
+        min-width: 120px;
+        padding: 16px 12px;
+        gap: 6px;
+    }
+    
+    div.friends-page .tab-icon {
+        font-size: 20px;
+    }
+    
+    div.friends-page .tab-text {
+        font-size: 12px;
+    }
+    
+    div.friends-page .tab-count {
+        font-size: 11px;
+        padding: 1px 6px;
+    }
+    
+    div.friends-page .page-content {
+        padding: 0 16px;
+    }
+    
+    div.friends-page .auth-required {
+        min-height: 50vh;
+        padding: 30px 20px;
+    }
+    
+    div.friends-page .auth-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+    
+    div.friends-page .auth-required h2 {
+        font-size: 22px;
+    }
+    
+    div.friends-page .auth-required p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+    
+    div.friends-page .login-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    div.friends-page .page-header {
+        padding: 24px 16px;
+    }
+    
+    div.friends-page .header-content h1 {
+        font-size: 20px;
+    }
+    
+    div.friends-page .header-stats {
+        gap: 8px;
+    }
+    
+    div.friends-page .stat-item {
+        padding: 10px 12px;
+    }
+    
+    div.friends-page .stat-number {
+        font-size: 18px;
+    }
+    
+    div.friends-page .tab-button {
+        min-width: 100px;
+        padding: 14px 8px;
+    }
+    
+    div.friends-page .tab-icon {
+        font-size: 18px;
+    }
+    
+    div.friends-page .tab-text {
+        font-size: 11px;
+    }
+    
+    div.friends-page .page-content {
+        padding: 0 12px;
+    }
+}

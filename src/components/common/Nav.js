@@ -29,6 +29,7 @@ const Nav = () => {
         navigate('/playlists');
     };
 
+
     return (
         <nav className="nav">
             <div className="nav-container">

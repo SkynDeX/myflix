@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ContentTypeProvider } from './contexts/ContentTypeContext';
+import { FriendProvider } from './contexts/FriendContext';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Nav from './components/common/Nav';
@@ -16,13 +17,12 @@ import ContentDetail from './pages/ContentDetail';
 import RandomRecommend from './pages/RandomRecommend';
 import UserPlaylists from './pages/UserPlaylists';
 import Search from './pages/Search';
+import Friends from './pages/Friends';
+import PlaylistDetail from './pages/PlaylistDetail';
+import LikedPlaylists from './pages/LikedPlaylists';
+import ProfileEdit from './pages/ProfileEdit';
 import DevTools from './pages/DevTools';
 import './App.css';
-
-// 임시 페이지 컴포넌트들
-const LikedPlaylists = () => <div style={{ padding: '100px 20px' }}><h1>내가 좋아요한 추천 리스트 (개발중)</h1></div>;
-const ProfileEdit = () => <div style={{ padding: '100px 20px' }}><h1>회원수정 (개발중)</h1></div>;
-const PlaylistDetail = () => <div style={{ padding: '100px 20px' }}><h1>플레이리스트 상세 (개발중)</h1></div>;
 
 // 인증이 필요한 라우트를 위한 컴포넌트
 const ProtectedRoute = ({ children }) => {
@@ -35,7 +35,8 @@ function App() {
         <Router>
             <AuthProvider>
                 <ContentTypeProvider>
-                    <div className="App">
+                    <FriendProvider>
+                        <div className="App">
                         <Header />
 
                         <Routes>
@@ -82,6 +83,11 @@ function App() {
                                     <ProfileEdit />
                                 </ProtectedRoute>
                             } />
+                            <Route path="/friends" element={
+                                <ProtectedRoute>
+                                    <Friends />
+                                </ProtectedRoute>
+                            } />
 
                             {/* 컨텐츠 관련 */}
                             <Route path="/search" element={<Search />} />
@@ -93,7 +99,8 @@ function App() {
 
                         <Footer />
                         <DevTools />
-                    </div>
+                        </div>
+                    </FriendProvider>
                 </ContentTypeProvider>
             </AuthProvider>
         </Router>

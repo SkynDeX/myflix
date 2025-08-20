@@ -35,6 +35,7 @@ const filterValidBooks = (books) => {
 const isValidBook = (book) => {
     return (
         book &&
+        book.isbn && // isbn이 있음
         book.title && // 제목이 있음
         book.description && // 설명이 있음
         book.image && // 이미지가 있음
@@ -83,19 +84,33 @@ const getHighQualityImage = (imageLinks) => {
         return null;
     }
 
-    // 2. URL에 zoom 파라미터가 있는지 확인하고 수정
-    // (thumbnail, smallThumbnail만 있는 경우 화질 개선)
-    if (imageUrl.includes('zoom=')) {
-        // zoom=1을 zoom=5로 변경
-        imageUrl = imageUrl.replace(/&zoom=\d+/g, '&zoom=5');
+    // 2. HTTP를 HTTPS로 변경 (보안 및 성능 향상)
+    imageUrl = imageUrl.replace(/^http:/, 'https:');
+
+    // 3. 고화질 이미지 URL 최적화
+    if (imageUrl.includes('books.google.com/books/content')) {
+        // Google Books 이미지 서버에서 고화질 버전 요청
+        imageUrl = imageUrl
+            .replace(/&zoom=\d+/g, '')  // 기존 zoom 제거
+            .replace(/&edge=\w+/g, '')  // edge 파라미터 제거 (품질 저하 요인)
+            .replace(/&source=\w+/g, '') // source 파라미터 제거
+            + '&zoom=1&edge=curl&source=gbs_api'; // 최적 파라미터 설정
     }
     
-    // 3. 만약 zoom 파라미터가 없다면 추가 (일부 구 버전 URL)
-    else if (imageUrl.includes('books.google.com/books/content')) {
-        imageUrl += '&zoom=5';
+    // 4. 구글 이미지 서버의 크기 파라미터 최적화
+    if (imageUrl.includes('books.googleusercontent.com')) {
+        // w, h 파라미터로 크기 조정 (최대 800px)
+        imageUrl = imageUrl
+            .replace(/&w=\d+/g, '')
+            .replace(/&h=\d+/g, '')
+            + '&w=800&h=1200'; // 도서 표지 비율에 맞춤
     }
 
-    console.log('최종 이미지 URL:', imageUrl);
+    // 5. 썸네일 URL에서 고화질 버전으로 변환 시도
+    if (imageUrl.includes('&img=1&zoom=')) {
+        imageUrl = imageUrl.replace(/&zoom=\d+/, '&zoom=1'); // zoom=1이 실제로는 가장 고화질
+    }
+
     return imageUrl;
 };
 

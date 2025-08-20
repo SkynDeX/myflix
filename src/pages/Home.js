@@ -34,11 +34,11 @@ const Home = () => {
                 setCarouselItems(newBooks.slice(0, 10));
             }
 
-            // 사용자 플레이리스트 로드 (공개된 것만, 좋아요 순으로 정렬)
+            // 사용자 플레이리스트 로드 (랜덤 정렬)
             const playlists = getAllPlaylists();
-            const publicPlaylists = playlists.filter(playlist => playlist.isPublic);
-            const sortedPlaylists = publicPlaylists.sort((a, b) => (b.likes || 0) - (a.likes || 0));
-            setUserPlaylists(sortedPlaylists);
+            // 랜덤 셔플
+            const shuffledPlaylists = [...playlists].sort(() => Math.random() - 0.5);
+            setUserPlaylists(shuffledPlaylists);
         } catch (error) {
             console.error('컨텐츠 로드 실패:', error);
         } finally {
@@ -77,8 +77,12 @@ const Home = () => {
                 </div>
                 {userPlaylists.length > 0 ? (
                     <div className="playlist-grid">
-                        {userPlaylists.slice(0, 10).map((playlist) => (
-                            <PlaylistCard key={playlist.id} playlist={playlist} />
+                        {userPlaylists.slice(0, 8).map((playlist) => (
+                            <PlaylistCard 
+                                key={playlist.id} 
+                                playlist={playlist} 
+                                showUserInfo={true}
+                            />
                         ))}
                     </div>
                 ) : (

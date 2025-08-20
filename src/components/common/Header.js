@@ -75,6 +75,9 @@ const Header = () => {
                                 <Link to="/mypage" className="dropdown-item">
                                     마이페이지
                                 </Link>
+                                <Link to="/friends" className="dropdown-item">
+                                    친구 관리
+                                </Link>
                                 <Link to="/wishlist" className="dropdown-item">
                                     위시리스트
                                 </Link>

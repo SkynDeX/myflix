@@ -86,7 +86,6 @@ export const generateDummyWishlists = () => {
             const item = {
                 id: `wish_${user.id}_${i}`,
                 userId: user.id,
-                userName: user.name,
                 contentType: isMovie ? 'movie' : 'book',
                 contentId: isMovie ? `movie_${Math.floor(Math.random() * 1000)}` : `book_${Math.floor(Math.random() * 1000)}`,
                 title: isMovie ?
@@ -119,7 +118,6 @@ export const generateDummyRecommendedContent = () => {
             const item = {
                 id: `rec_${user.id}_${i}`,
                 fromUserId: user.id,
-                fromUserName: user.name,
                 toUserId: 'currentUser', // 현재 로그인한 사용자
                 contentType: isMovie ? 'movie' : 'book',
                 contentId: isMovie ? `movie_${Math.floor(Math.random() * 1000)}` : `book_${Math.floor(Math.random() * 1000)}`,
@@ -162,7 +160,6 @@ export const generateDummyPlaylists = () => {
             const playlist = {
                 id: `playlist_${user.id}_${i}`,
                 userId: user.id,
-                userName: user.name,
                 userProfileImage: user.profileImage,
                 title: [
                     `${isMovie ? '영화' : '도서'} 추천 모음`,

@@ -25,7 +25,9 @@ export const STORAGE_KEYS = {
     LIKED_PLAYLISTS: 'likedPlaylists',
     VIEWED_CONTENT: 'viewedContent',
     REVIEWS: 'reviews',
-    CURRENT_CONTENT_TYPE: 'currentContentType'
+    CURRENT_CONTENT_TYPE: 'currentContentType',
+    FRIENDS: 'friends',
+    FRIEND_REQUESTS: 'friendRequests'
 };
 
 // 탭 메뉴
