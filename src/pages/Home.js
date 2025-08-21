@@ -6,7 +6,7 @@ import Carousel from '../components/common/Carousel';
 import PlaylistCard from '../components/playlist/PlaylistCard';
 import { useContentType } from '../contexts/ContentTypeContext';
 import { getGoogleBestsellers } from '../services/googleBooksApi';
-import { getNowPlayingMovies } from '../services/tmdbApi';
+import { getKoreanNowPlayingMovies, getNowPlayingMovies } from '../services/tmdbApi';
 import { getAllPlaylists } from '../utils/localStorage';
 import './Home.css';
 
@@ -26,7 +26,7 @@ const Home = () => {
         try {
             if (isMovieMode) {
                 // 영화 데이터 로드
-                const nowPlaying = await getNowPlayingMovies();
+                const nowPlaying = await getKoreanNowPlayingMovies();
                 setCarouselItems(nowPlaying.slice(0, 10));
             } else {
                 // 도서 데이터 로드

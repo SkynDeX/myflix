@@ -26,7 +26,7 @@ const FriendList = () => {
         if (!searchQuery.trim()) return true;
         
         const query = searchQuery.toLowerCase();
-        return (friend.email?.toLowerCase().includes(query));
+        return (friend.email?.toLowerCase().includes(query) || friend.name?.toLowerCase().includes(query));
     });
 
     const handleSearchChange = (e) => {

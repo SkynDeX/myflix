@@ -22,7 +22,7 @@ const Footer = () => {
                         © 2025 MyFlix. 하이미디어 React 포트폴리오 프로젝트
                     </p>
                     <p className="footer-credits">
-                        Movie data from <strong>TMDB</strong> | Book data from <strong>Naver Open API</strong>
+                        Movie data from <strong>TMDB</strong> | Book data from <strong>Google Books API</strong>
                     </p>
                     <p className="footer-made-with">
                         Made with ❤️ for learning React

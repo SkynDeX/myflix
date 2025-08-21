@@ -79,13 +79,6 @@ const SignUp = () => {
             newErrors.name = '이름을 입력해주세요';
         }
 
-        // 생년 검증
-        if (!formData.birthYear) {
-            newErrors.birthYear = '출생년도를 입력해주세요';
-        } else if (formData.birthYear < 1900 || formData.birthYear > new Date().getFullYear()) {
-            newErrors.birthYear = '올바른 출생년도를 입력해주세요';
-        }
-
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -176,40 +169,6 @@ const SignUp = () => {
                             placeholder="이름을 입력해주세요"
                         />
                         {errors.name && <span className="error-message">{errors.name}</span>}
-                    </div>
-
-                    {/* 출생년도 */}
-                    <div className="form-group">
-                        <label htmlFor="birthYear">출생년도</label>
-                        <input
-                            type="number"
-                            id="birthYear"
-                            name="birthYear"
-                            value={formData.birthYear}
-                            onChange={handleChange}
-                            className={errors.birthYear ? 'error' : ''}
-                            placeholder="예: 1990"
-                            min="1900"
-                            max={new Date().getFullYear()}
-                        />
-                        {errors.birthYear && <span className="error-message">{errors.birthYear}</span>}
-                    </div>
-
-                    {/* 선호 장르 */}
-                    <div className="form-group">
-                        <label>선호 장르 (선택)</label>
-                        <div className="genre-grid">
-                            {movieGenres.map(genre => (
-                                <button
-                                    key={genre}
-                                    type="button"
-                                    className={`genre-chip ${formData.favoriteGenres.includes(genre) ? 'selected' : ''}`}
-                                    onClick={() => handleGenreToggle(genre)}
-                                >
-                                    {genre}
-                                </button>
-                            ))}
-                        </div>
                     </div>
 
                     <button type="submit" className="auth-submit-button">

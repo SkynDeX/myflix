@@ -21,7 +21,7 @@ const PlaylistModal = ({ content, type, onClose }) => {
             id: type === 'movie' ? content.id : content.isbn,
             type: type,
             title: content.title,
-            image: type === 'movie' ? content.poster_path : content.image,
+            image: type === 'movie' ? (content.poster_path ? content.poster_path : content.image) : content.image,
             description: content.overview || content.description
         };
 

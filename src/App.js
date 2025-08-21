@@ -83,7 +83,7 @@ function App() {
                                     <ProfileEdit />
                                 </ProtectedRoute>
                             } />
-                            <Route path="/friends" element={
+                            <Route path="/friends/:id" element={
                                 <ProtectedRoute>
                                     <Friends />
                                 </ProtectedRoute>
@@ -98,7 +98,7 @@ function App() {
                         </Routes>
 
                         <Footer />
-                        <DevTools />
+                        {/* <DevTools /> */}
                         </div>
                     </FriendProvider>
                 </ContentTypeProvider>

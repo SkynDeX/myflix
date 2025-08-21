@@ -52,18 +52,6 @@ const Login = () => {
         }
     };
 
-    // 테스트 계정으로 로그인
-    const handleTestLogin = () => {
-        const testUser = {
-            id: 'test-user',
-            email: 'test@myflix.com',
-            name: '테스트 사용자',
-            password: 'test123'
-        };
-        login(testUser);
-        navigate('/');
-    };
-
     return (
         <div className="auth-container">
             <div className="auth-box">
@@ -109,17 +97,6 @@ const Login = () => {
                         로그인
                     </button>
                 </form>
-
-                {/* 테스트 로그인 버튼 */}
-                <div className="test-login-section">
-                    <div className="divider">
-                        <span>또는</span>
-                    </div>
-                    <button onClick={handleTestLogin} className="test-login-button">
-                        테스트 계정으로 로그인
-                    </button>
-                    <p className="test-info">개발 테스트용 계정입니다</p>
-                </div>
 
                 <div className="auth-footer">
                     <p>아직 계정이 없으신가요?</p>

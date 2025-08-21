@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import UserCard from './UserCard';
 import './FriendSearch.css';
 
-const FriendSearch = () => {
+const FriendSearch = ({ id }) => {
     const { user } = useAuth();
     const { searchUsers } = useFriend();
     const [searchQuery, setSearchQuery] = useState('');
@@ -14,6 +14,10 @@ const FriendSearch = () => {
     const [isSearching, setIsSearching] = useState(false);
 
     useEffect(() => {
+        if (id) {
+            setSearchQuery(id);
+        }
+
         const delaySearch = setTimeout(() => {
             if (searchQuery.trim() && user) {
                 setIsSearching(true);

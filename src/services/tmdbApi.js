@@ -5,6 +5,17 @@ import API_CONFIG from '../config/apiConfig';
 
 const { API_KEY, BASE_URL, IMAGE_BASE_URL, LANGUAGE, REGION } = API_CONFIG.TMDB;
 
+// 날짜 유틸리티 함수들
+const getTodayDate = () => {
+    return new Date().toISOString().split('T')[0];
+};
+
+const getDateNMonthsAgo = (months) => {
+    const date = new Date();
+    date.setMonth(date.getMonth() - months);
+    return date.toISOString().split('T')[0];
+};
+
 // Axios 인스턴스 생성
 const tmdbApi = axios.create({
     baseURL: BASE_URL,
@@ -43,6 +54,46 @@ export const getNowPlayingMovies = async (page = 1) => {
         return filterValidMovies(response.data.results);
     } catch (error) {
         console.error('현재 상영 영화 불러오기 실패:', error);
+        return [];
+    }
+};
+
+// 한국 현재 상영중인 영화 (한국 영화 포함)
+export const getKoreanNowPlayingMovies = async (page = 1) => {
+    try {
+        // 일반 현재 상영작과 한국 영화를 모두 가져오기
+        const [nowPlayingResponse, koreanMoviesResponse] = await Promise.all([
+            tmdbApi.get('/movie/now_playing', { params: { page } }),
+            tmdbApi.get('/discover/movie', {
+                params: {
+                    page,
+                    with_origin_country: 'KR', // 한국 원산지 영화
+                    'primary_release_date.gte': getDateNMonthsAgo(3), // 최근 3개월
+                    'primary_release_date.lte': getTodayDate(),
+                    include_adult: false,
+                    sort_by: 'popularity.desc',
+                }
+            })
+        ]);
+
+        // 두 결과를 합치고 중복 제거
+        const allMovies = [
+            ...nowPlayingResponse.data.results,
+            ...koreanMoviesResponse.data.results
+        ];
+
+        const uniqueMovies = allMovies.filter((movie, index, self) => 
+            index === self.findIndex(m => m.id === movie.id)
+        );
+
+        uniqueMovies.sort(() => Math.random() - 0.5);
+
+        // 인기도 순으로 정렬
+        // uniqueMovies.sort((a, b) => b.popularity - a.popularity);
+
+        return filterValidMovies(uniqueMovies);
+    } catch (error) {
+        console.error('한국 현재 상영 영화 불러오기 실패:', error);
         return [];
     }
 };

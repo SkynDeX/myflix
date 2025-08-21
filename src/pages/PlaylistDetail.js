@@ -122,6 +122,14 @@ const PlaylistDetail = () => {
         return friends.some(friend => friend.id === playlistOwner.id);
     };
 
+    const handleOwnerClick = () => {
+        if (!isOwnerFriend() && !isOwner) {
+            if (window.confirm('친구 요청 페이지로 이동하시겠습니까?')) {
+                navigate(`/friends/${playlistOwner.email}`);
+            }
+        }
+    };
+
     if (loading) {
         return (
             <div className="playlist-detail-page">
@@ -158,7 +166,7 @@ const PlaylistDetail = () => {
                     {/* 소유자 정보 */}
                     <div className="playlist-owner-info">
                         <div className="owner-details">
-                            <span className="owner-name">{getOwnerDisplayName()}</span>
+                            <span className={`owner-name ${isOwnerFriend() || isOwner ? '' : 'clickable'}`} onClick={handleOwnerClick}>{getOwnerDisplayName()}</span>
                             {isOwnerFriend() && <span className="owner-badge">친구</span>}
                             <div className="playlist-meta">
                                 <span className="playlist-date">

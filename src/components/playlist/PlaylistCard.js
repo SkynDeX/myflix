@@ -22,20 +22,12 @@ const PlaylistCard = ({ playlist, showUserInfo = false }) => {
         return user.name || user.email;
     };
 
-    const getUserInitial = () => {
-        const displayName = getUserDisplayName();
-        return displayName ? displayName.charAt(0).toUpperCase() : '?';
-    };
-
     return (
         <div className="playlist-card" onClick={handleClick}>
             <div className="playlist-card-header">
                 <h3 className="playlist-title">{playlist.title}</h3>
                 {showUserInfo && (
                     <div className="playlist-user-info">
-                        <div className="user-avatar-small">
-                            {getUserInitial()}
-                        </div>
                         <span className="user-name-small">{getUserDisplayName()}</span>
                     </div>
                 )}

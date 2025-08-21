@@ -117,6 +117,17 @@ div.playlist-detail-page .owner-name {
     color: #333;
 }
 
+div.playlist-detail-page .owner-name.clickable {
+    cursor: pointer;
+    color: #667eea;
+    transition: all 0.3s;
+}
+
+div.playlist-detail-page .owner-name.clickable:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
 div.playlist-detail-page .owner-badge {
     display: inline-block;
     background: #667eea;
