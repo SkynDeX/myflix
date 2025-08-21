@@ -82,6 +82,7 @@ header .search-input {
     font-size: 14px;
     outline: none;
     transition: background-color 0.3s;
+    margin-right: 5px;
 }
 
 header .search-input::placeholder {
