@@ -83,6 +83,11 @@ function App() {
                                     <ProfileEdit />
                                 </ProtectedRoute>
                             } />
+                            <Route path="/friends" element={
+                                <ProtectedRoute>
+                                    <Friends />
+                                </ProtectedRoute>
+                            } />
                             <Route path="/friends/:id" element={
                                 <ProtectedRoute>
                                     <Friends />
