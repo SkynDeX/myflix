@@ -9,19 +9,19 @@ import { ContentTypeProvider } from './contexts/ContentTypeContext';
 import { FriendProvider } from './contexts/FriendContext';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
-import ContentDetail from './pages/ContentDetail';
-import Friends from './pages/Friends';
-import Home from './pages/Home';
-import LikedPlaylists from './pages/LikedPlaylists';
-import MyPage from './pages/MyPage';
-import MyPlaylists from './pages/MyPlaylists';
-import PlaylistDetail from './pages/PlaylistDetail';
-import ProfileEdit from './pages/ProfileEdit';
-import RandomRecommend from './pages/RandomRecommend';
-import RecommendedContent from './pages/RecommendedContent';
-import Search from './pages/Search';
-import UserPlaylists from './pages/UserPlaylists';
-import Wishlist from './pages/Wishlist';
+import ContentDetail from './pages/ContentDetail/ContentDetail';
+import Friends from './pages/Friends/Friends';
+import Home from './pages/Home/Home';
+import LikedPlaylists from './pages/Playlists/LikedPlaylists/LikedPlaylists';
+import MyPage from './pages/MyPage/MyPage';
+import MyPlaylists from './pages/Playlists/MyPlaylists/MyPlaylists';
+import PlaylistDetail from './pages/Playlists/PlaylistDetail/PlaylistDetail';
+import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import RandomRecommend from './pages/RandomRecommend/RandomRecommend';
+import RecommendedContent from './pages/RecommendedContent/RecommendedContent';
+import Search from './pages/Search/Search';
+import UserPlaylists from './pages/Playlists/UserPlaylists/UserPlaylists';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 // 인증이 필요한 라우트를 위한 컴포넌트
 const ProtectedRoute = ({ children }) => {

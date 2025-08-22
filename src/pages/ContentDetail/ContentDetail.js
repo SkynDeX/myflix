@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { getGoogleBookByISBN } from '../services/googleBooksApi';
-import { getImageUrl, getMovieDetails, getSimilarMovies } from '../services/tmdbApi';
+import { useAuth } from '../../contexts/AuthContext';
+import { getGoogleBookByISBN } from '../../services/googleBooksApi';
+import { getImageUrl, getMovieDetails, getSimilarMovies } from '../../services/tmdbApi';
 
-import ContentCard from '../components/content/ContentCard';
-import PlaylistModal from '../components/modals/PlaylistModal';
-import RecommendModal from '../components/modals/RecommendModal';
+import ContentCard from '../../components/content/ContentCard';
+import PlaylistModal from '../../components/modals/PlaylistModal';
+import RecommendModal from '../../components/modals/RecommendModal';
 import {
     addReview,
     addToWishlist,
@@ -16,7 +16,7 @@ import {
     getUserReview,
     getWishlist,
     removeFromWishlist
-} from '../utils/localStorage';
+} from '../../utils/localStorage';
 import './ContentDetail.css';
 
 const ContentDetail = () => {

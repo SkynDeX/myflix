@@ -1,11 +1,11 @@
 // 친구 관리 페이지
 
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
-import { useFriend } from '../contexts/FriendContext';
-import FriendList from '../components/friend/FriendList';
-import FriendSearch from '../components/friend/FriendSearch';
-import FriendRequestList from '../components/friend/FriendRequestList';
+import { useAuth } from '../../contexts/AuthContext';
+import { useFriend } from '../../contexts/FriendContext';
+import FriendList from '../../components/friend/FriendList';
+import FriendSearch from '../../components/friend/FriendSearch';
+import FriendRequestList from '../../components/friend/FriendRequestList';
 import './Friends.css';
 import { useParams } from 'react-router-dom';
 

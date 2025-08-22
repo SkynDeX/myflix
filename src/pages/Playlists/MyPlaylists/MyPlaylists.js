@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useContentType } from '../contexts/ContentTypeContext';
+import { useAuth } from '../../../contexts/AuthContext';
+import { useContentType } from '../../../contexts/ContentTypeContext';
 import {
     getMyPlaylists,
     createPlaylist,
     updatePlaylist,
     deletePlaylist
-} from '../utils/localStorage';
-import PlaylistCard from '../components/playlist/PlaylistCard';
+} from '../../../utils/localStorage';
+import PlaylistCard from '../../../components/playlist/PlaylistCard';
 import './MyPlaylists.css';
 
 const MyPlaylists = () => {

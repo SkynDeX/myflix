@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContentType } from '../contexts/ContentTypeContext';
-import { getTop200Movies } from '../services/tmdbApi';
-import { getGoogleBestsellers } from '../services/googleBooksApi';
+import { useContentType } from '../../contexts/ContentTypeContext';
+import { getTop200Movies } from '../../services/tmdbApi';
+import { getGoogleBestsellers } from '../../services/googleBooksApi';
 import './RandomRecommend.css';
 
 const RandomRecommend = () => {

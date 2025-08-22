@@ -1,14 +1,14 @@
 // 내가 좋아요한 추천리스트 페이지
 
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthContext';
 import { 
     getLikedPlaylists,
     getPlaylistById,
     getAllUsers,
     unlikePlaylist
-} from '../utils/localStorage';
-import PlaylistCard from '../components/playlist/PlaylistCard';
+} from '../../../utils/localStorage';
+import PlaylistCard from '../../../components/playlist/PlaylistCard';
 import './LikedPlaylists.css';
 
 const LikedPlaylists = () => {

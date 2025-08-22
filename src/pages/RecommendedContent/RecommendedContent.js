@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useContentType } from '../contexts/ContentTypeContext';
-import { getRecommendedContent, getAllUsers, markContentAsViewed, removeFromRecommendation } from '../utils/localStorage';
-import ContentCard from '../components/content/ContentCard';
+import { useAuth } from '../../contexts/AuthContext';
+import { useContentType } from '../../contexts/ContentTypeContext';
+import { getRecommendedContent, getAllUsers, markContentAsViewed, removeFromRecommendation } from '../../utils/localStorage';
+import ContentCard from '../../components/content/ContentCard';
 import './RecommendedContent.css';
 
 const RecommendedContent = () => {

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useFriend } from '../contexts/FriendContext';
+import { useAuth } from '../../../contexts/AuthContext';
+import { useFriend } from '../../../contexts/FriendContext';
 import {
     getPlaylistById,
     deletePlaylist,
@@ -11,8 +11,8 @@ import {
     unlikePlaylist,
     getLikedPlaylists,
     getAllUsers
-} from '../utils/localStorage';
-import ContentCard from '../components/content/ContentCard';
+} from '../../../utils/localStorage';
+import ContentCard from '../../../components/content/ContentCard';
 import './PlaylistDetail.css';
 
 const PlaylistDetail = () => {

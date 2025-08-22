@@ -1,4 +1,5 @@
 /* Modal 공통 스타일 */
+@import '../../styles/variables.css';
 
 .modal-overlay {
     position: fixed;
@@ -10,29 +11,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
-    animation: fadeIn 0.3s;
+    z-index: var(--z-modal);
+    animation: fadeIn var(--transition-normal);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
 }
 
 .modal-content {
-    background: white;
-    border-radius: 10px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
     max-width: 500px;
     width: 90%;
     max-height: 80vh;
     display: flex;
     flex-direction: column;
-    animation: slideUp 0.3s;
+    animation: slideUp var(--transition-normal);
+    box-shadow: var(--shadow-xl);
 }
 
 @keyframes slideUp {
@@ -40,7 +41,6 @@
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -49,8 +49,8 @@
 
 /* 모달 헤더 */
 .modal-header {
-    padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--gray-200);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,15 +58,15 @@
 
 .modal-header h2 {
     margin: 0;
-    font-size: 20px;
-    color: #333;
+    font-size: var(--font-xl);
+    color: var(--gray-800);
 }
 
 .modal-close {
     background: none;
     border: none;
     font-size: 28px;
-    color: #999;
+    color: var(--gray-500);
     cursor: pointer;
     line-height: 1;
     padding: 0;
@@ -75,147 +75,149 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s;
+    transition: color var(--transition-normal);
+    border-radius: var(--radius-md);
 }
 
 .modal-close:hover {
-    color: #333;
+    color: var(--gray-800);
+    background: var(--gray-100);
 }
 
 /* 모달 바디 */
 .modal-body {
-    padding: 20px;
+    padding: var(--spacing-lg);
     flex: 1;
     overflow-y: auto;
 }
 
 .modal-subtitle {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
+    font-size: var(--font-sm);
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-lg);
 }
 
 /* 사용자 목록 */
 .user-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-sm);
 }
 
 .user-item {
     display: flex;
     align-items: center;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 5px;
+    padding: var(--spacing-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-normal);
 }
 
 .user-item:hover {
-    background: #e9ecef;
+    background: var(--gray-100);
 }
 
 .user-item input[type="checkbox"] {
-    margin-right: 12px;
+    margin-right: var(--spacing-md);
 }
 
 .user-item span {
-    font-size: 14px;
-    color: #333;
+    font-size: var(--font-sm);
+    color: var(--gray-800);
 }
 
 /* 플레이리스트 선택 목록 */
 .playlist-select-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-sm);
 }
 
 .playlist-select-item {
     display: flex;
     align-items: center;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 5px;
+    padding: var(--spacing-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background var(--transition-normal);
 }
 
 .playlist-select-item:hover {
-    background: #e9ecef;
+    background: var(--gray-100);
 }
 
 .playlist-select-item input[type="radio"] {
-    margin-right: 12px;
+    margin-right: var(--spacing-md);
 }
 
 .playlist-select-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--spacing-xs);
 }
 
 .playlist-select-title {
-    font-size: 14px;
+    font-size: var(--font-sm);
     font-weight: 500;
-    color: #333;
+    color: var(--gray-800);
 }
 
 .playlist-select-count {
-    font-size: 12px;
-    color: #999;
+    font-size: var(--font-xs);
+    color: var(--gray-500);
 }
 
 /* 메시지 */
 .no-users-message,
 .no-playlists-message {
     text-align: center;
-    color: #999;
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.6;
+    color: var(--gray-500);
+    padding: var(--spacing-lg);
+    font-size: var(--font-sm);
+    line-height: var(--leading-relaxed);
 }
 
 /* 모달 푸터 */
 .modal-footer {
-    padding: 20px;
-    border-top: 1px solid #e0e0e0;
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--gray-200);
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: var(--spacing-sm);
 }
 
 .modal-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-sm);
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all var(--transition-normal);
     border: none;
 }
 
 .modal-button.cancel {
-    background: #f0f0f0;
-    color: #666;
+    background: var(--gray-100);
+    color: var(--gray-600);
 }
 
 .modal-button.cancel:hover {
-    background: #e0e0e0;
+    background: var(--gray-200);
 }
 
 .modal-button.confirm {
-    background: #667eea;
-    color: white;
+    background: var(--primary-color);
+    color: var(--white);
 }
 
 .modal-button.confirm:hover {
-    background: #5a67d8;
+    background: var(--primary-hover);
 }
 
 .modal-button.confirm:disabled {
-    background: #ccc;
+    background: var(--gray-300);
     cursor: not-allowed;
     opacity: 0.6;
 }
@@ -228,19 +230,19 @@
     }
 
     .modal-header {
-        padding: 15px;
+        padding: var(--spacing-md);
     }
 
     .modal-body {
-        padding: 15px;
+        padding: var(--spacing-md);
     }
 
     .modal-footer {
-        padding: 15px;
+        padding: var(--spacing-md);
     }
 
     .modal-button {
-        padding: 8px 16px;
-        font-size: 13px;
+        padding: calc(var(--spacing-sm) * 0.8) var(--spacing-md);
+        font-size: var(--font-xs);
     }
 }

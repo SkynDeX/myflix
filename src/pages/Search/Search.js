@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import ContentCard from '../components/content/ContentCard';
-import { useContentType } from '../contexts/ContentTypeContext';
-import { searchGoogleBooks } from '../services/googleBooksApi';
-import { getGenres, searchMovies } from '../services/tmdbApi';
+import ContentCard from '../../components/content/ContentCard';
+import { useContentType } from '../../contexts/ContentTypeContext';
+import { searchGoogleBooks } from '../../services/googleBooksApi';
+import { getGenres, searchMovies } from '../../services/tmdbApi';
 import './Search.css';
 
 const Search = () => {

@@ -2,17 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useContentType } from '../contexts/ContentTypeContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useContentType } from '../../contexts/ContentTypeContext';
 import {
     getWishlist,
     getRecommendedContent,
     getMyPlaylists,
     getLikedPlaylists,
     getAllPlaylists
-} from '../utils/localStorage';
-import ContentCard from '../components/content/ContentCard';
-import PlaylistCard from '../components/playlist/PlaylistCard';
+} from '../../utils/localStorage';
+import ContentCard from '../../components/content/ContentCard';
+import PlaylistCard from '../../components/playlist/PlaylistCard';
 import './MyPage.css';
 
 const MyPage = () => {

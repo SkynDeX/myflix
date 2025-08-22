@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import {
     updateUser,
     getAllUsers
-} from '../utils/localStorage';
-import { STORAGE_KEYS } from '../constants/constants';
+} from '../../utils/localStorage';
+import { STORAGE_KEYS } from '../../constants/constants';
 import './ProfileEdit.css';
 
 const ProfileEdit = () => {

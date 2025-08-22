@@ -1,3 +1,6 @@
+/* 변수 import */
+@import './variables.css';
+
 /* CSS Reset 및 기본 설정 */
 * {
     box-sizing: border-box;

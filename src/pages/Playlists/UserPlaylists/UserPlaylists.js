@@ -1,9 +1,9 @@
 // 다른 회원들의 추천 리스트 페이지
 
 import React, { useState, useEffect } from 'react';
-import { useContentType } from '../contexts/ContentTypeContext';
-import { getAllPlaylists } from '../utils/localStorage';
-import PlaylistCard from '../components/playlist/PlaylistCard';
+import { useContentType } from '../../../contexts/ContentTypeContext';
+import { getAllPlaylists } from '../../../utils/localStorage';
+import PlaylistCard from '../../../components/playlist/PlaylistCard';
 import './UserPlaylists.css';
 
 const UserPlaylists = () => {
