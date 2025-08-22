@@ -30,7 +30,7 @@ const UserPlaylists = () => {
             // 모든 플레이리스트를 가져옴 (isPublic 속성이 없는 경우를 대비)
             setPlaylists(allPlaylists);
         } catch (error) {
-            console.error('플레이리스트 로드 실패:', error);
+            console.error('추천 리스트 로드 실패:', error);
             setPlaylists([]);
         } finally {
             setLoading(false);
@@ -104,7 +104,7 @@ const UserPlaylists = () => {
         return (
             <div className="loading-container">
                 <div className="loading-spinner"></div>
-                <p>플레이리스트를 불러오는 중...</p>
+                <p>추천 리스트를 불러오는 중...</p>
             </div>
         );
     }
@@ -124,7 +124,7 @@ const UserPlaylists = () => {
                     <div className="search-input-wrapper">
                         <input
                             type="text"
-                            placeholder="플레이리스트 제목이나 설명으로 검색..."
+                            placeholder="추천 리스트 제목이나 설명으로 검색..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="search-input"

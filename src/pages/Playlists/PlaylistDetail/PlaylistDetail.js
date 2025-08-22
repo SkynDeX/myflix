@@ -38,7 +38,7 @@ const PlaylistDetail = () => {
             // 플레이리스트 데이터 가져오기
             const playlistData = getPlaylistById(id);
             if (!playlistData) {
-                alert('플레이리스트를 찾을 수 없습니다.');
+                alert('추천 리스트를 찾을 수 없습니다.');
                 navigate('/');
                 return;
             }
@@ -58,8 +58,8 @@ const PlaylistDetail = () => {
             }
 
         } catch (error) {
-            console.error('플레이리스트 불러오기 실패:', error);
-            alert('플레이리스트를 불러오는 중 오류가 발생했습니다.');
+            console.error('추천 리스트 불러오기 실패:', error);
+            alert('추천 리스트를 불러오는 중 오류가 발생했습니다.');
             navigate('/');
         } finally {
             setLoading(false);
@@ -67,17 +67,17 @@ const PlaylistDetail = () => {
     };
 
     const handleDelete = () => {
-        if (!window.confirm('이 플레이리스트를 삭제하시겠습니까?\n삭제된 플레이리스트는 복구할 수 없습니다.')) {
+        if (!window.confirm('이 추천 리스트를 삭제하시겠습니까?\n삭제된 추천 리스트는 복구할 수 없습니다.')) {
             return;
         }
 
         try {
             deletePlaylist(user.id, id);
-            alert('플레이리스트가 삭제되었습니다.');
+            alert('추천 리스트가 삭제되었습니다.');
             navigate('/my-playlists');
         } catch (error) {
-            console.error('플레이리스트 삭제 실패:', error);
-            alert('플레이리스트 삭제 중 오류가 발생했습니다.');
+            console.error('추천 리스트 삭제 실패:', error);
+            alert('추천 리스트 삭제 중 오류가 발생했습니다.');
         }
     };
 
@@ -134,7 +134,7 @@ const PlaylistDetail = () => {
         return (
             <div className="playlist-detail-page">
                 <div className="loading-container">
-                    <div className="loading-text">플레이리스트를 불러오는 중...</div>
+                    <div className="loading-text">추천 리스트를 불러오는 중...</div>
                 </div>
             </div>
         );
@@ -144,7 +144,7 @@ const PlaylistDetail = () => {
         return (
             <div className="playlist-detail-page">
                 <div className="error-container">
-                    <h2>플레이리스트를 찾을 수 없습니다</h2>
+                    <h2>추천 리스트를 찾을 수 없습니다</h2>
                     <button onClick={() => navigate('/')} className="back-button">
                         홈으로 돌아가기
                     </button>
@@ -218,7 +218,7 @@ const PlaylistDetail = () => {
                 ) : (
                     <div className="empty-playlist">
                         <div className="empty-icon">📝</div>
-                        <h2>빈 플레이리스트</h2>
+                        <h2>빈 추천 리스트</h2>
                         <p>아직 추가된 컨텐츠가 없습니다.</p>
                     </div>
                 )}

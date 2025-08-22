@@ -13,7 +13,7 @@ const PlaylistModal = ({ content, type, onClose }) => {
 
     const handleAddToPlaylist = () => {
         if (!selectedPlaylist) {
-            alert('플레이리스트를 선택해주세요.');
+            alert('추천 리스트를 선택해주세요.');
             return;
         }
 
@@ -26,7 +26,7 @@ const PlaylistModal = ({ content, type, onClose }) => {
         };
 
         addToPlaylist(user.id, selectedPlaylist, contentData);
-        alert('플레이리스트에 추가되었습니다!');
+        alert('추천 리스트에 추가되었습니다!');
         onClose();
     };
 
@@ -34,16 +34,16 @@ const PlaylistModal = ({ content, type, onClose }) => {
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
-                    <h2>플레이리스트에 추가</h2>
+                    <h2>추천 리스트에 추가</h2>
                     <button className="modal-close" onClick={onClose}>×</button>
                 </div>
 
                 <div className="modal-body">
-                    <p className="modal-subtitle">"{content.title}"을(를) 추가할 플레이리스트를 선택하세요</p>
+                    <p className="modal-subtitle">"{content.title}"을(를) 추가할 추천 리스트를 선택하세요</p>
 
                     {playlists.length === 0 ? (
                         <p className="no-playlists-message">
-                            생성된 플레이리스트가 없습니다.
+                            생성된 추천 리스트가 없습니다.
                             <br />
                             먼저 나만의 추천 리스트를 만들어주세요.
                         </p>

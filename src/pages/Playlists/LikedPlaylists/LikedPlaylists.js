@@ -54,14 +54,14 @@ const LikedPlaylists = () => {
             setLikedPlaylists(playlistsWithDetails);
 
         } catch (error) {
-            console.error('좋아요한 플레이리스트 불러오기 실패:', error);
+            console.error('좋아요한 추천 리스트 불러오기 실패:', error);
         } finally {
             setLoading(false);
         }
     };
 
     const handleUnlike = (playlistId) => {
-        if (!window.confirm('이 플레이리스트를 좋아요 목록에서 제거하시겠습니까?')) {
+        if (!window.confirm('이 추천 리스트를 좋아요 목록에서 제거하시겠습니까?')) {
             return;
         }
 
@@ -79,7 +79,7 @@ const LikedPlaylists = () => {
         return (
             <div className="liked-playlists-page">
                 <div className="loading-container">
-                    <div className="loading-text">좋아요한 플레이리스트를 불러오는 중...</div>
+                    <div className="loading-text">좋아요한 추천 리스트를 불러오는 중...</div>
                 </div>
             </div>
         );
@@ -99,7 +99,7 @@ const LikedPlaylists = () => {
             <div className="liked-playlists-stats">
                 <div className="stat-item">
                     <span className="stat-number">{likedPlaylists.length}</span>
-                    <span className="stat-label">개의 플레이리스트</span>
+                    <span className="stat-label">개의 추천 리스트</span>
                 </div>
             </div>
 
@@ -130,13 +130,13 @@ const LikedPlaylists = () => {
             ) : (
                 <div className="empty-liked-playlists">
                     <div className="empty-icon">💖</div>
-                    <h2>아직 좋아요한 플레이리스트가 없어요</h2>
-                    <p>다른 사용자들의 멋진 플레이리스트를 탐색해보세요!</p>
+                    <h2>아직 좋아요한 추천 리스트가 없어요</h2>
+                    <p>다른 사용자들의 멋진 추천 리스트를 탐색해보세요!</p>
                     <button 
                         onClick={() => window.location.href = '/playlists'}
                         className="explore-button"
                     >
-                        플레이리스트 둘러보기
+                        추천 리스트 둘러보기
                     </button>
                 </div>
             )}
