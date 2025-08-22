@@ -17,11 +17,6 @@ const SignUp = () => {
     });
     const [errors, setErrors] = useState({});
 
-    const movieGenres = [
-        '액션', '코미디', '드라마', '로맨스', 'SF', '스릴러',
-        '공포', '애니메이션', '다큐멘터리', '판타지'
-    ];
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -35,15 +30,6 @@ const SignUp = () => {
                 [name]: ''
             }));
         }
-    };
-
-    const handleGenreToggle = (genre) => {
-        setFormData(prev => ({
-            ...prev,
-            favoriteGenres: prev.favoriteGenres.includes(genre)
-                ? prev.favoriteGenres.filter(g => g !== genre)
-                : [...prev.favoriteGenres, genre]
-        }));
     };
 
     const validateForm = () => {

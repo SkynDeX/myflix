@@ -1,28 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
+import Footer from './components/common/Footer';
+import Header from './components/common/Header';
+import Nav from './components/common/Nav';
 import { AuthProvider } from './contexts/AuthContext';
 import { ContentTypeProvider } from './contexts/ContentTypeContext';
 import { FriendProvider } from './contexts/FriendContext';
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
-import Nav from './components/common/Nav';
-import Home from './pages/Home';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
-import MyPage from './pages/MyPage';
-import Wishlist from './pages/Wishlist';
-import RecommendedContent from './pages/RecommendedContent';
-import MyPlaylists from './pages/MyPlaylists';
 import ContentDetail from './pages/ContentDetail';
-import RandomRecommend from './pages/RandomRecommend';
-import UserPlaylists from './pages/UserPlaylists';
-import Search from './pages/Search';
 import Friends from './pages/Friends';
-import PlaylistDetail from './pages/PlaylistDetail';
+import Home from './pages/Home';
 import LikedPlaylists from './pages/LikedPlaylists';
+import MyPage from './pages/MyPage';
+import MyPlaylists from './pages/MyPlaylists';
+import PlaylistDetail from './pages/PlaylistDetail';
 import ProfileEdit from './pages/ProfileEdit';
-import DevTools from './pages/DevTools';
-import './App.css';
+import RandomRecommend from './pages/RandomRecommend';
+import RecommendedContent from './pages/RecommendedContent';
+import Search from './pages/Search';
+import UserPlaylists from './pages/UserPlaylists';
+import Wishlist from './pages/Wishlist';
 
 // 인증이 필요한 라우트를 위한 컴포넌트
 const ProtectedRoute = ({ children }) => {
@@ -103,7 +102,6 @@ function App() {
                         </Routes>
 
                         <Footer />
-                        {/* <DevTools /> */}
                         </div>
                     </FriendProvider>
                 </ContentTypeProvider>

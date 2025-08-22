@@ -3,16 +3,11 @@
 
 const API_CONFIG = {
     TMDB: {
-        API_KEY: '10a5e25315ab48e8dabb83995d5b7e11',
-        BASE_URL: 'https://api.themoviedb.org/3',
-        IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
+        API_KEY: process.env.REACT_APP_TMDB_API_KEY,
+        BASE_URL: process.env.REACT_APP_TMDB_BASE_URL,
+        IMAGE_BASE_URL: process.env.REACT_APP_TMDB_IMAGE_BASE_URL,
         LANGUAGE: 'ko-KR',
         REGION: 'KR'
-    },
-    NAVER: {
-        CLIENT_ID: 'x6PkPd_EEQgzdFRcxKxl',
-        CLIENT_SECRET: 'gflwNj4Ze0',
-        BASE_URL: '/v1/search' // 프록시를 통해 연결
     }
 };
 

@@ -6,7 +6,7 @@ import Carousel from '../components/common/Carousel';
 import PlaylistCard from '../components/playlist/PlaylistCard';
 import { useContentType } from '../contexts/ContentTypeContext';
 import { getGoogleBestsellers } from '../services/googleBooksApi';
-import { getKoreanNowPlayingMovies, getNowPlayingMovies } from '../services/tmdbApi';
+import { getKoreanNowPlayingMovies } from '../services/tmdbApi';
 import { getAllPlaylists } from '../utils/localStorage';
 import './Home.css';
 
