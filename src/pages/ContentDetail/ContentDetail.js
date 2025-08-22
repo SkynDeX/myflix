@@ -18,6 +18,7 @@ import {
     removeFromWishlist
 } from '../../utils/localStorage';
 import './ContentDetail.css';
+import { useContentType } from '../../contexts/ContentTypeContext';
 
 const ContentDetail = () => {
     const { type, id } = useParams();
@@ -35,13 +36,19 @@ const ContentDetail = () => {
         rating: 0,
         text: ''
     });
-
+    const { contentType, isMovieMode, isBookMode, switchToMovie, switchToBook } = useContentType();
+    
     useEffect(() => {
         loadContent();
     }, [type, id]);
 
     useEffect(() => {
         if (user && content) {
+            if (type === 'movie') {
+                switchToMovie();
+            } else if (type === 'book') {
+                switchToBook();
+            }
             checkWishlistStatus();
             loadUserReview();
         }

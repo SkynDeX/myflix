@@ -5,11 +5,13 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useFriend } from '../../contexts/FriendContext';
 import { addRecommendation } from '../../utils/localStorage';
 import './Modal.css';
+import { useNavigate } from 'react-router-dom';
 
 const RecommendModal = ({ content, type, onClose }) => {
     const { user } = useAuth();
     const { friends } = useFriend();
     const [selectedUsers, setSelectedUsers] = useState([]);
+    const navigate = useNavigate();
 
     // 친구 목록만 표시
     const users = friends;
@@ -23,6 +25,11 @@ const RecommendModal = ({ content, type, onClose }) => {
     };
 
     const handleRecommend = () => {
+        if (users.length === 0) {
+            navigate('/friends');
+            return;
+        }
+
         if (selectedUsers.length === 0) {
             alert('추천할 사용자를 선택해주세요.');
             return;
@@ -83,9 +90,8 @@ const RecommendModal = ({ content, type, onClose }) => {
                     <button
                         className="modal-button confirm"
                         onClick={handleRecommend}
-                        disabled={selectedUsers.length === 0}
                     >
-                        추천하기
+                        {users.length === 0 ? "친구찾기" : "추천하기"}
                     </button>
                 </div>
             </div>
