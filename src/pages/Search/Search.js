@@ -204,24 +204,6 @@ const Search = () => {
                                     ))}
                                 </select>
                             </div>
-
-                            {/* 정렬 기준 */}
-                            <div className="filter-group">
-                                <label htmlFor="sort-filter">정렬:</label>
-                                <select
-                                    id="sort-filter"
-                                    value={sortBy}
-                                    onChange={(e) => {
-                                        setSortBy(e.target.value);
-                                        handleFilterChange();
-                                    }}
-                                    className="filter-select"
-                                >
-                                    <option value="relevance">관련도순</option>
-                                    <option value="date">최신순</option>
-                                    <option value="rating">평점순</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 )}
