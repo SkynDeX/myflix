@@ -60,7 +60,7 @@ export const addUser = (user) => {
     const users = getAllUsers();
     const newUser = {
         ...user,
-        id: Date.now().toString(),
+        id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: new Date().toISOString()
     };
     users.push(newUser);
@@ -184,7 +184,7 @@ export const createPlaylist = (userId, playlist) => {
 
     const newPlaylist = {
         ...playlist,
-        id: Date.now().toString(),
+        id: `${userId}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         userId,
         createdAt: new Date().toISOString(),
         likes: 0,

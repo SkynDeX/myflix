@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContentType } from '../../contexts/ContentTypeContext';
-import { getTop200Movies } from '../../services/tmdbApi';
+import { getTop200Movies, hasMovieTrailer } from '../../services/tmdbApi';
 import { getGoogleBestsellers } from '../../services/googleBooksApi';
 import './RandomRecommend.css';
 
@@ -22,23 +22,43 @@ const RandomRecommend = () => {
             let contentList = [];
 
             if (isMovieMode) {
-                // TOP 200 영화 중 랜덤 선택
+                // TOP 200 영화 중 예고편 있는 것만 랜덤 선택
                 contentList = await getTop200Movies();
+                
+                // 예고편이 있는 영화 찾기 (최대 10번 시도)
+                let attempts = 0;
+                let randomContent = null;
+                
+                while (attempts < 10 && !randomContent) {
+                    const randomIndex = Math.floor(Math.random() * Math.min(contentList.length, 200));
+                    const candidate = contentList[randomIndex];
+                    
+                    if (await hasMovieTrailer(candidate.id)) {
+                        randomContent = candidate;
+                        break;
+                    }
+                    attempts++;
+                }
+                
+                if (randomContent) {
+                    navigate(`/content/movie/${randomContent.id}`);
+                } else {
+                    // 예고편 없어도 일단 진행
+                    const randomIndex = Math.floor(Math.random() * Math.min(contentList.length, 200));
+                    const fallbackContent = contentList[randomIndex];
+                    navigate(`/content/movie/${fallbackContent.id}`);
+                }
             } else {
                 // TOP 200 도서 중 랜덤 선택
                 contentList = await getGoogleBestsellers(200);
-            }
-
-            if (contentList.length > 0) {
-                // 랜덤으로 하나 선택
-                const randomIndex = Math.floor(Math.random() * Math.min(contentList.length, 200));
-                const randomContent = contentList[randomIndex];
-
-                // 컨텐츠 상세 페이지로 이동
-                const contentId = isMovieMode ? randomContent.id : randomContent.isbn;
-                navigate(`/content/${isMovieMode ? 'movie' : 'book'}/${contentId}`);
-            } else {
-                throw new Error('컨텐츠를 찾을 수 없습니다');
+                
+                if (contentList.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * Math.min(contentList.length, 200));
+                    const randomContent = contentList[randomIndex];
+                    navigate(`/content/book/${randomContent.isbn}`);
+                } else {
+                    throw new Error('도서를 찾을 수 없습니다');
+                }
             }
         } catch (error) {
             console.error('랜덤 컨텐츠 로드 실패:', error);

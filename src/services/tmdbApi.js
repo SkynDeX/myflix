@@ -190,7 +190,7 @@ export const getMoviesByYear = async (year, page = 1) => {
     }
 };
 
-// 추천용 인기 영화 TOP 200 가져오기
+// 추천용 인기 영화 TOP 200 가져오기 (빠른 로딩을 위해 예고편 필터링은 나중에)
 export const getTop200Movies = async () => {
     try {
         const movies = [];
@@ -202,18 +202,37 @@ export const getTop200Movies = async () => {
             });
 
             const validMovies = response.data.results.filter(movie => {
-                // 필터링 완화: 기본적인 유효성만 확인
                 return isValidMovie(movie);
             });
 
             movies.push(...validMovies);
         }
 
-        // 상세 정보 확인 없이 바로 반환 (API 호출 횟수 감소)
         return movies.slice(0, 200);
     } catch (error) {
         console.error('TOP 200 영화 불러오기 실패:', error);
         return [];
+    }
+};
+
+// 영화에 예고편이 있는지 확인하는 별도 함수 (필요시 호출)
+export const hasMovieTrailer = async (movieId) => {
+    try {
+        const response = await tmdbApi.get(`/movie/${movieId}`, {
+            params: {
+                language: 'ko-KR',
+                append_to_response: 'videos'
+            }
+        });
+
+        return response.data.videos && 
+            response.data.videos.results && 
+            response.data.videos.results.some(video => 
+                video.site === 'YouTube' && 
+                (video.type === 'Trailer' || video.type === 'Teaser')
+            );
+    } catch (error) {
+        return false;
     }
 };
 

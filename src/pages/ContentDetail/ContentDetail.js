@@ -9,6 +9,7 @@ import { getImageUrl, getMovieDetails, getSimilarMovies } from '../../services/t
 import ContentCard from '../../components/content/ContentCard';
 import PlaylistModal from '../../components/modals/PlaylistModal';
 import RecommendModal from '../../components/modals/RecommendModal';
+import { useContentType } from '../../contexts/ContentTypeContext';
 import {
     addReview,
     addToWishlist,
@@ -18,7 +19,6 @@ import {
     removeFromWishlist
 } from '../../utils/localStorage';
 import './ContentDetail.css';
-import { useContentType } from '../../contexts/ContentTypeContext';
 
 const ContentDetail = () => {
     const { type, id } = useParams();
@@ -52,7 +52,7 @@ const ContentDetail = () => {
             checkWishlistStatus();
             loadUserReview();
         }
-    }, [user, content]);
+    }, [user, content, id]);
 
     const loadContent = async () => {
         setLoading(true);
@@ -94,6 +94,13 @@ const ContentDetail = () => {
             setReviewData({
                 rating: review.rating,
                 text: review.text
+            });
+        } else {
+            // 리뷰가 없으면 상태를 초기화
+            setUserReview(null);
+            setReviewData({
+                rating: 0,
+                text: ''
             });
         }
     };

@@ -22,6 +22,7 @@ import RecommendedContent from './pages/RecommendedContent/RecommendedContent';
 import Search from './pages/Search/Search';
 import UserPlaylists from './pages/Playlists/UserPlaylists/UserPlaylists';
 import Wishlist from './pages/Wishlist/Wishlist';
+import DevTools from './pages/DevTools/DevTools';
 
 // 인증이 필요한 라우트를 위한 컴포넌트
 const ProtectedRoute = ({ children }) => {
@@ -99,6 +100,9 @@ function App() {
                             <Route path="/recommend/random" element={<RandomRecommend />} />
                             <Route path="/playlists" element={<UserPlaylists />} />
                             <Route path="/playlist/:id" element={<PlaylistDetail />} />
+
+                            {/* 개발자 도구 */}
+                            <Route path="/devtools" element={<DevTools />} />
                         </Routes>
 
                         <Footer />
