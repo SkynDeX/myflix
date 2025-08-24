@@ -65,7 +65,7 @@ const Home = () => {
             {/* 다른 유저들의 추천 리스트 */}
             <section className="home-section">
                 <div className="section-header">
-                    <h2 className="section-title">다른 회원들의 추천 리스트</h2>
+                    <h2 className="section-title">회원들의 추천 리스트</h2>
                     {userPlaylists.length > 0 && (
                         <button
                             className="more-button"
@@ -77,7 +77,7 @@ const Home = () => {
                 </div>
                 {userPlaylists.length > 0 ? (
                     <div className="playlist-grid">
-                        {userPlaylists.slice(0, 8).map((playlist) => (
+                        {userPlaylists.slice(0, 9).map((playlist) => (
                             <PlaylistCard 
                                 key={playlist.id} 
                                 playlist={playlist} 

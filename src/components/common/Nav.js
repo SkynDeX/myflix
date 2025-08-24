@@ -80,7 +80,7 @@ const Nav = () => {
                     </button>
                     <button className="nav-action-button" onClick={handleUserPlaylists}>
                         <span className="button-icon">📚</span>
-                        다른 회원의 추천 리스트 보러가기
+                        회원들의 추천 리스트 보러가기
                     </button>
                 </div>
             </div>

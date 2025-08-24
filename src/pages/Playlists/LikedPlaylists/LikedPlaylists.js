@@ -10,11 +10,13 @@ import {
 } from '../../../utils/localStorage';
 import PlaylistCard from '../../../components/playlist/PlaylistCard';
 import './LikedPlaylists.css';
+import { useNavigate } from 'react-router-dom';
 
 const LikedPlaylists = () => {
     const { user } = useAuth();
     const [likedPlaylists, setLikedPlaylists] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadLikedPlaylists();
@@ -59,6 +61,8 @@ const LikedPlaylists = () => {
             setLoading(false);
         }
     };
+
+    const navigator = useNavigate();
 
     const handleUnlike = (playlistId) => {
         if (!window.confirm('이 추천 리스트를 좋아요 목록에서 제거하시겠습니까?')) {
@@ -133,7 +137,7 @@ const LikedPlaylists = () => {
                     <h2>아직 좋아요한 추천 리스트가 없어요</h2>
                     <p>다른 사용자들의 멋진 추천 리스트를 탐색해보세요!</p>
                     <button 
-                        onClick={() => window.location.href = '/playlists'}
+                        onClick={() => navigator('/playlists')}
                         className="explore-button"
                     >
                         추천 리스트 둘러보기

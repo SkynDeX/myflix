@@ -112,7 +112,7 @@ const UserPlaylists = () => {
     return (
         <div className="user-playlists">
             <div className="page-header">
-                <h1 className="page-title">다른 회원들의 추천 리스트</h1>
+                <h1 className="page-title">회원들의 추천 리스트</h1>
                 <p className="page-description">
                     다양한 회원들이 만든 추천 리스트를 둘러보고 영감을 얻어보세요!
                 </p>
@@ -196,7 +196,7 @@ const UserPlaylists = () => {
                         <p>
                             {contentTypeFilter !== 'all'
                                 ? `${contentTypeFilter === 'movie' ? '영화' : '도서'} 추천 리스트가 아직 없습니다.`
-                                : '다른 회원들이 만든 추천 리스트가 아직 없습니다.'
+                                : '회원들이 만든 추천 리스트가 아직 없습니다.'
                             }
                         </p>
                         <p>첫 번째로 나만의 추천 리스트를 만들어보세요!</p>
