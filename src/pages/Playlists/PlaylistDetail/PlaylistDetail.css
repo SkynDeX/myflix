@@ -149,22 +149,21 @@ div.playlist-detail-page .playlist-meta {
 
 /* 액션 버튼 */
 div.playlist-detail-page .playlist-actions {
-    display: flex;
-    gap: 10px;
+
 }
 
 div.playlist-detail-page .action-button {
     padding: 12px 20px;
     border-radius: 25px;
     font-size: 16px;
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
     border: none;
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 120px;
+    width: 140px;
+    margin: 15px 0;
 }
 
 div.playlist-detail-page .delete-button {

@@ -200,6 +200,12 @@ const PlaylistDetail = () => {
                             {isLiked ? '💖' : '🤍'}좋아요
                         </button>
                     )}
+                    <button 
+                        onClick={() => navigate('/playlists')}
+                        className="action-button list-button"
+                    >
+                        📋 목록 보기
+                    </button>
                 </div>
             </div>
 
